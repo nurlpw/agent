@@ -1,0 +1,58 @@
+[package]
+name = "nurl"
+version = "0.2.0"
+edition = "2024"
+rust-version = "1.88"
+description = "Nurl agent: exposes a local HTTP server on a public URL"
+license = "MIT"
+repository = "https://github.com/nurlpw/agent"
+homepage = "https://nurl.pw"
+readme = "README.md"
+publish = false
+build = "build.rs"
+
+[lib]
+name = "nurl_agent"
+path = "src/lib.rs"
+
+[[bin]]
+name = "nurl"
+path = "src/main.rs"
+
+[dependencies]
+tokio = { version = "1", features = ["macros", "rt-multi-thread", "signal", "sync"] }
+tokio-tungstenite = { version = "0.30", features = ["rustls-tls-webpki-roots"] }
+futures-util = "0.3"
+reqwest = { version = "0.13", features = ["json", "stream"] }
+clap = { version = "4", features = ["derive", "env"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+anyhow = "1"
+url = "2"
+thiserror = "2"
+sha2 = "0.11"
+percent-encoding = "2"
+gethostname = "1"
+os_info = { version = "3", default-features = false }
+qrcode = { version = "0.14", default-features = false }
+anstream = "1"
+anstyle = "1"
+chrono = { version = "0.4", default-features = false, features = ["clock"] }
+terminal_size = "0.4"
+unicode-width = "0.2"
+
+[lints.rust]
+unsafe_code = "forbid"
+
+[lints.clippy]
+pedantic = { level = "warn", priority = -1 }
+missing_errors_doc = "allow"
+missing_panics_doc = "allow"
+
+[profile.release]
+strip = true
+lto = true
+codegen-units = 1
+
+[dev-dependencies]
+rqrr = "0.11"
