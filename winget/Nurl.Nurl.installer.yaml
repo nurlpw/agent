@@ -12,6 +12,6 @@ Commands:
 Installers:
   - Architecture: x64
     InstallerUrl: https://github.com/nurlpw/agent/releases/download/agent-v0.2.0/nurl-0.2.0-x86_64-pc-windows-msvc.zip
-    InstallerSha256: 0000000000000000000000000000000000000000000000000000000000000000
+    InstallerSha256: 5EBF3C2666A8E2B063EDD47BE7015715783D4122A267B41B9A31EC4FC36E88DE
 ManifestType: installer
 ManifestVersion: 1.9.0
